@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
 
+import LoginForm from './loginForm.js'
+import RegisterForm from './registerForm.js'
+
 import '../styles/main.css'
 
 const customStyles = {
@@ -19,15 +22,16 @@ class Header extends Component {
     super()
 
     this.state = {
-      modalIsOpen: false
+      modalIsOpen: false,
+      form: 'login'
     }
 
     this.openModal = this.openModal.bind(this)
     this.closeModal = this.closeModal.bind(this)
   }
 
-  openModal() {
-    this.setState({ modalIsOpen: true })
+  openModal(form) {
+    this.setState({ modalIsOpen: true, form })
   }
 
   afterOpenModal() {
@@ -46,8 +50,8 @@ class Header extends Component {
         <h1>Standard Project!</h1>
 
         <div className="header-buttons-cont">
-          <button onClick={this.openModal}>Login</button>
-          <button>Sign Up</button>
+          <button onClick={() => this.openModal('login')}>Login</button>
+          <button onClick={() => this.openModal('signup')}>Sign Up</button>
         </div>
 
         <Modal
@@ -57,8 +61,19 @@ class Header extends Component {
           contentLabel="Example Modal"
           style={customStyles}
           >
+
           <button onClick={this.closeModal}>Close</button>
-          <div>I am a modal</div>
+
+          <h5>{this.state.form === 'login' ? 'Log In' : 'Sign Up'}</h5>
+
+          {
+            this.state.form === 'login'
+            ?
+            <LoginForm />
+            :
+            <RegisterForm />
+          }
+
         </Modal>
 
       </div>
