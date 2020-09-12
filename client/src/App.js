@@ -4,17 +4,20 @@ import {
   HashRouter
 } from 'react-router-dom';
 
-import RegisterForm from './components/registerForm.js';
-import LoginForm from './components/loginForm.js';
+import Header from './components/header.js'
+import RegisterForm from './components/registerForm.js'
+import LoginForm from './components/loginForm.js'
+import MainPage from './components/mainPage.js'
 
-import './App.css';
+import './App.css'
 
 function App() {
   return (
     <HashRouter>
       <div className="App">
-        <h1>Standard Project!</h1>
+        <Header />
         <div>Hi</div>
+        <Route path="/" component={MainPage} />
         <Route path="/login" component={LoginForm} />
         <Route path="/register" component={RegisterForm} />
       </div>
