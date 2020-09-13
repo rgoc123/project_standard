@@ -12,7 +12,7 @@ const cors = require('cors');
 const Sequelize = require('sequelize');
 const DB_URI = process.env.NODE_ENV === 'production'
   ? cfg.env.DB_URI
-  : 'postgresql://localhost/<INSERT DB NAME>'; // Add database name
+  : 'postgresql://localhost/project_standard'; // Add database name
 
 const sequelizeOptions = {
   logging: false,
@@ -41,7 +41,7 @@ const User = require('./models/User.js');
 
 // sequelize.drop();
 // sequelize.sync({ force: true }).then(() => {
-//   createDbEntries();
+//   // createDbEntries();
 // });
 
 

@@ -29,6 +29,8 @@ class LoginForm extends Component {
       const loginInfo = this.state;
       console.log(loginInfo);
 
+      debugger
+
       const preJSONifiedRes = await fetch('http://localhost:7001/v1/login', {
         method: 'POST',
         body: JSON.stringify(loginInfo),
@@ -38,6 +40,7 @@ class LoginForm extends Component {
       });
       const res = await preJSONifiedRes.json();
       console.log(res);
+      debugger
       if (res.status === 200) {
         localStorage.setItem('authToken', JSON.stringify(res.data.token));
         localStorage.setItem('user', JSON.stringify(res.data.user));
@@ -69,12 +72,12 @@ class LoginForm extends Component {
   }
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     if (this.state.loggedIn) return (<Redirect to='/mainpage' />);
 
     return (
       <div className="login-form-container">
-        <form onSubmit={this.handleSubmit}>
+        <form>
           <label htmlFor="login-email">Email</label>
           <input
             id="login-email"
@@ -89,7 +92,7 @@ class LoginForm extends Component {
             placeholder="Password"
             onChange={this.handleInputChange}
           /><br></br>
-          <button>Login</button>
+          <button onClick={this.handleSubmit}>Login</button>
         </form>
         <button onClick={() => this.processForgotPassword()}>Forgot Password</button>
       </div>

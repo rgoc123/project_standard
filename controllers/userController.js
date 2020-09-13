@@ -16,10 +16,10 @@ exports.register = async (req, res, next) => {
     tokenContents.uuid = newUser.uuid;
     tokenContents.email = newUser.email;
 
-    const refreshToken = authController.signToken('refresh', tokenContents);
-    const token = authController.signToken('id', tokenContents);
-
-    res.setHeader('authorization', 'Bearer ' + token);
+    // const refreshToken = authController.signToken('refresh', tokenContents);
+    // const token = authController.signToken('id', tokenContents);
+    //
+    // res.setHeader('authorization', 'Bearer ' + token);
 
     return res.status(200).json({ status: 200, data: newUser, token: token, message: "User created!" });
   } catch (err) {
@@ -29,32 +29,33 @@ exports.register = async (req, res, next) => {
 }
 
 exports.login = async (req, res, next) => {
+  console.log('Login pinged')
   try {
     const user = await User.findOne({ where: { email: req.body.email } });
+    console.log(user)
 
     if (user) {
       const tokenContents = {};
       tokenContents.uuid = user.uuid;
       tokenContents.email = user.email;
 
-      const token = authController.signToken('refresh', tokenContents);
+      // const token = authController.signToken('refresh', tokenContents);
 
       const approvedUser = await user.checkPass(req.body.password);
 
       const data = {
         user: user,
-        token: token
+        // token: token
       }
 
-      res.setHeader('authorization', 'Bearer ' + token);
-      res.status(200).json({ status: 200, data: data, message: "Logged in!" });
-
-      return next();
+      // res.setHeader('authorization', 'Bearer ' + token);
+      return res.status(200).json({ status: 200, data: data, message: "Logged in!" });
+    } else {
+      return res.status(404).json({ status: 404, data: null, message: "No user found" });
     }
   } catch (err) {
     console.log(err);
-    res.status(err.status || 500).json({ status: err.status || 500, message: err.message });
-    return next();
+    return res.status(err.status || 500).json({ status: err.status || 500, message: err.message });
   }
 }
 
