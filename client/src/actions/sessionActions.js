@@ -35,9 +35,11 @@ export const signup = user => dispatch => {
 };
 
 export const login = user => dispatch => {
-  return(APIUtil.login(user).then(user => (
+  debugger
+  return(APIUtil.login(user).then(user => {
+    debugger
     dispatch(receiveCurrentUser(user))
-  ), err => (
+  }, err => (
     dispatch(receiveSessionErrors(err.responseJSON))
   )));
 };

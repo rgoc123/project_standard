@@ -1,5 +1,8 @@
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
+
+import { login } from '../actions/sessionActions'
 
 class LoginForm extends Component {
   constructor() {
@@ -92,7 +95,7 @@ class LoginForm extends Component {
             placeholder="Password"
             onChange={this.handleInputChange}
           /><br></br>
-          <button onClick={this.handleSubmit}>Login</button>
+        <button onClick={() => this.props.login({ email: 'money', password: 'bro' })}>Login</button>
         </form>
         <button onClick={() => this.processForgotPassword()}>Forgot Password</button>
       </div>
@@ -100,4 +103,16 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm;
+const mapStateToProps = (state) => {
+  return {
+    loggedIn: Boolean(state.session.currentUser)
+  };
+};
+
+const mapDispatchToProps = (dispatch, { location }) => {
+  return {
+    login: user => dispatch(login(user))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
