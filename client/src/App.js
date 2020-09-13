@@ -15,17 +15,17 @@ import configureStore from './store/store'
 import './App.css'
 
 function App() {
-  let store = configureStore();;
+  const preloadedState = { session: { currentUser: { userName: 'Bobby', email: 'o@o.com'} } };
+  let store = configureStore(preloadedState);;
   document.addEventListener('DOMContentLoaded', () => {
     if (window.currentUser) {
-      const preloadedState = { session: { currentUser: window.currentUser } };
-      store = configureStore(preloadedState);
+      const preloadedStateTwo = { session: { currentUser: window.currentUser } };
+      store = configureStore(preloadedStateTwo);
       window.getState = store.getState;
       window.dispatch = store.dispatch;
       delete window.currentUser;
     } else {
       store = configureStore();
-      // debugger
       window.getState = store.getState;
       window.dispatch = store.dispatch;
     }

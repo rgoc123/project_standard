@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class MainPage extends Component {
   constructor() {
@@ -19,10 +20,22 @@ class MainPage extends Component {
     return (
       <div>
         <h2>Welcome to the main page!</h2>
-        <h4>You are {!this.state.loggedIn && 'not'} logged in.</h4>
+        <h4>You are {!this.props.currentUser && 'not'} logged in.</h4>
       </div>
     );
   }
 }
 
-export default MainPage;
+const mapStateToProps = (state) => {
+  return {
+    currentUser: state.session.currentUser
+  };
+};
+
+const mapDispatchToProps = id => dispatch => {
+  return {
+
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
