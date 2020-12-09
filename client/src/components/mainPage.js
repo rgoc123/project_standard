@@ -17,6 +17,8 @@ class MainPage extends Component {
   }
 
   render() {
+    console.log('Redux state')
+    console.log(this.props)
     return (
       <div>
         <h2>Welcome to the main page!</h2>

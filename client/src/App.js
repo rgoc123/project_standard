@@ -15,7 +15,7 @@ import configureStore from './store/store'
 import './App.css'
 
 function App() {
-  const preloadedState = { session: { currentUser: { userName: 'Bobby', email: 'o@o.com'} } };
+  const preloadedState = { session: { currentUser: null } };
   let store = configureStore(preloadedState);;
   document.addEventListener('DOMContentLoaded', () => {
     if (window.currentUser) {
