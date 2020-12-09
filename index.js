@@ -32,6 +32,7 @@ module.exports.sequelize = sequelize;
 
 // MODELS
 const User = require('./models/User.js');
+const ReviewItem = require('./models/ReviewItem.js');
 
 // ASSOCIATIONS
 
@@ -57,10 +58,16 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 // CONTROLLERS
 const userController = require('./controllers/userController.js');
 const authController = require('./controllers/authController.js');
+const reviewItemController = require('./controllers/reviewItemController.js')
 
 // ROUTES
+// User
 app.post('/v1/register', userController.register);
 app.post('/v1/login', userController.login);
+
+// Review Items
+app.get('/v1/reviewItems', reviewItemController.getReviewItems)
+
 
 const port = process.env.PORT || 7001;
 app.listen(port, function() {

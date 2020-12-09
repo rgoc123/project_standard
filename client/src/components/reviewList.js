@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 function ReviewList() {
-  const [reviewItems, setReviewItems] = useState([
-    { title: 'Combo Sum II no-sort', uuid: '1234' }
-  ])
+  const [reviewItems, setReviewItems] = useState([])
 
   useEffect(() => {
     async function getData() {
@@ -15,7 +13,7 @@ function ReviewList() {
     }
 
     getData()
-  })
+  }, [])
 
   return (
     <div className="review-list">
