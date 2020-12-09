@@ -1,9 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 function ReviewList() {
   const [reviewItems, setReviewItems] = useState([
     { title: 'Combo Sum II no-sort', uuid: '1234' }
   ])
+
+  useEffect(() => {
+    async function getData() {
+      const preJSONifiedRes = await fetch('http://localhost:7001/v1/reviewItems');
+      const res = await preJSONifiedRes.json();
+
+      console.log(res)
+      setReviewItems(res.data)
+    }
+
+    getData()
+  })
 
   return (
     <div className="review-list">
