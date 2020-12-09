@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+import { getReviewItems } from '../actions/reviewItemActions'
+
 import ReviewList from './reviewList'
 
 class MainPage extends Component {
@@ -10,6 +12,10 @@ class MainPage extends Component {
       loggedIn: false
     }
     this.logout = this.logout.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.getReviewItems()
   }
 
   logout() {
@@ -40,7 +46,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = id => dispatch => {
   return {
-
+    getReviewItems: () => dispatch(getReviewItems())
   };
 };
 
