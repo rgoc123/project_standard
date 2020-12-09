@@ -1,5 +1,7 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
+import ReviewList from './reviewList'
 
 class MainPage extends Component {
   constructor() {
@@ -11,9 +13,9 @@ class MainPage extends Component {
   }
 
   logout() {
-    localStorage.removeItem('user');
-    localStorage.removeItem('authToken');
-    this.setState({ loggedIn: false });
+    localStorage.removeItem('user')
+    localStorage.removeItem('authToken')
+    this.setState({ loggedIn: false })
   }
 
   render() {
@@ -21,6 +23,8 @@ class MainPage extends Component {
       <div>
         <h2>Welcome to the main page!</h2>
         <h4>You are {!this.props.currentUser && 'not'} logged in.</h4>
+
+        <ReviewList />
       </div>
     );
   }

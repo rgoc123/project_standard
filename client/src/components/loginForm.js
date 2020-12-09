@@ -30,9 +30,6 @@ class LoginForm extends Component {
     try {
       e.preventDefault();
       const loginInfo = this.state;
-      console.log(loginInfo);
-
-      debugger
 
       const preJSONifiedRes = await fetch('http://localhost:7001/v1/login', {
         method: 'POST',
@@ -42,8 +39,7 @@ class LoginForm extends Component {
         }
       });
       const res = await preJSONifiedRes.json();
-      console.log(res);
-      debugger
+      
       if (res.status === 200) {
         localStorage.setItem('authToken', JSON.stringify(res.data.token));
         localStorage.setItem('user', JSON.stringify(res.data.user));

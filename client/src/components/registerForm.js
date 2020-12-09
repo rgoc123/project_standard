@@ -27,8 +27,7 @@ class RegisterForm extends Component {
     try {
       e.preventDefault();
       const signUpInfo = this.state;
-      console.log(signUpInfo);
-      debugger
+
       const preJSONifiedRes = await fetch('http://localhost:7001/v1/register', {
         method: 'POST',
         body: JSON.stringify(signUpInfo),
@@ -37,8 +36,7 @@ class RegisterForm extends Component {
         }
       });
       const res = await preJSONifiedRes.json();
-      console.log(res);
-      debugger
+      
       if (res.status === 200) {
         localStorage.setItem('authToken', res.token);
         localStorage.setItem('user', JSON.stringify(res.data));
