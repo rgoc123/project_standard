@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux'
+
+import { signup } from '../actions/sessionActions'
 
 class RegisterForm extends Component {
   constructor() {
@@ -28,30 +31,13 @@ class RegisterForm extends Component {
       e.preventDefault();
       const signUpInfo = this.state;
 
-      const preJSONifiedRes = await fetch('http://localhost:7001/v1/register', {
-        method: 'POST',
-        body: JSON.stringify(signUpInfo),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-      const res = await preJSONifiedRes.json();
-      
-      if (res.status === 200) {
-        localStorage.setItem('authToken', res.token);
-        localStorage.setItem('user', JSON.stringify(res.data));
-        this.setState({ loggedIn: true });
-        console.log("Registration complete!");
-      } else {
-        throw new Error(JSON.stringify(res.message));
-      }
+      this.props.signup(signUpInfo)
     } catch (err) {
       console.log(err);
     }
   }
 
   render() {
-    // console.log(this.state);
     if (this.state.loggedIn) return (<Redirect to='/mainpage' />);
 
     return (
@@ -78,4 +64,16 @@ class RegisterForm extends Component {
   }
 }
 
-export default RegisterForm;
+const mapStateToProps = (state) => {
+  return {
+    loggedIn: Boolean(state.session.currentUser)
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signup: user => dispatch(signup(user))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterForm)

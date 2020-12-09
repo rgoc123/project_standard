@@ -39,12 +39,11 @@ class LoginForm extends Component {
         }
       });
       const res = await preJSONifiedRes.json();
-      
+
       if (res.status === 200) {
         localStorage.setItem('authToken', JSON.stringify(res.data.token));
         localStorage.setItem('user', JSON.stringify(res.data.user));
         this.setState({ loggedIn: true });
-        console.log("Login successful!");
       } else {
         throw new Error(JSON.stringify(res.message));
       }
@@ -71,8 +70,8 @@ class LoginForm extends Component {
   }
 
   render() {
-    // console.log(this.state);
-    if (this.state.loggedIn) return (<Redirect to='/mainpage' />);
+    const { loggedIn, email, password } = this.state
+    if (loggedIn) return (<Redirect to='/mainpage' />);
 
     return (
       <div className="login-form-container">
@@ -80,14 +79,14 @@ class LoginForm extends Component {
           <label htmlFor="login-email">Email</label>
           <input
             id="login-email"
-            value={this.state.email}
+            value={email}
             placeholder="Email"
             onChange={this.handleInputChange}
           /><br></br>
           <label htmlFor="login-password">Password</label>
           <input
             id="login-password"
-            value={this.state.password}
+            value={password}
             placeholder="Password"
             onChange={this.handleInputChange}
           /><br></br>
