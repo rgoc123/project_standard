@@ -44,60 +44,55 @@ class Header extends Component {
     this.setState({ modalIsOpen: false })
   }
 
-  renderButtons() {
-    return (
-      <>
+  renderButtons(currentUser) {
+    if (currentUser) {
+      return (
         <div className="header-buttons-cont">
-          <button onClick={() => this.openModal('login')}>Log In</button>
-          <button onClick={() => this.openModal('signup')}>Sign Up</button>
+          <button>Log Out</button>
         </div>
+      )
+    } else {
+      return (
+        <>
+          <div className="header-buttons-cont">
+            <button onClick={() => this.openModal('login')}>Log In</button>
+            <button onClick={() => this.openModal('signup')}>Sign Up</button>
+          </div>
 
-        <Modal
-          isOpen={this.state.modalIsOpen}
-          onAfterOpen={this.afterOpenModal}
-          onRequestClose={this.closeModal}
-          contentLabel="Example Modal"
-          style={customStyles}
-          >
+          <Modal
+            isOpen={this.state.modalIsOpen}
+            onAfterOpen={this.afterOpenModal}
+            onRequestClose={this.closeModal}
+            contentLabel="Example Modal"
+            style={customStyles}
+            >
 
-          <button onClick={this.closeModal}>Close</button>
+            <button onClick={this.closeModal}>Close</button>
 
-          <h5>{this.state.form === 'login' ? 'Log In' : 'Sign Up'}</h5>
+            <h5>{this.state.form === 'login' ? 'Log In' : 'Sign Up'}</h5>
 
-          {
-            this.state.form === 'login'
-            ?
-            <LoginForm />
-            :
-            <RegisterForm />
-          }
+            {
+              this.state.form === 'login'
+              ?
+              <LoginForm />
+              :
+              <RegisterForm />
+            }
 
-        </Modal>
-      </>
+          </Modal>
+        </>
     )
-  }
-
-  renderLogout() {
-    return (
-      <div className="header-buttons-cont">
-        <button>Log Out</button>
-      </div>
-    )
+    }
   }
 
   render() {
+    const { currentUser } = this.props
     return (
       <div className="header-container">
 
         <h1>Standard Project!</h1>
 
-        {
-          this.props.currentUser
-          ?
-          this.renderLogout()
-          :
-          this.renderButtons()
-        }
+        {this.renderButtons(currentUser)}
 
       </div>
     )
