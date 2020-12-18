@@ -5,11 +5,11 @@ function ReviewList() {
 
   useEffect(() => {
     async function getData() {
-      const preJSONifiedRes = await fetch('http://localhost:7001/v1/reviewItems');
-      const res = await preJSONifiedRes.json();
+      const res = await fetch('http://localhost:7001/v1/reviewItems');
+      const resJSON = await res.json();
 
-      console.log(res)
-      setReviewItems(res.data)
+      console.log(resJSON)
+      setReviewItems(resJSON.data)
     }
 
     getData()
