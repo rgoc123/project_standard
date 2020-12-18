@@ -6,6 +6,7 @@ import { persistUser } from '../actions/sessionActions'
 import '../styles/main.css'
 
 import Menu from './menu'
+import CreateItemForm from './createItemForm'
 import ReviewList from './reviewList'
 import CookList from './cookList'
 import WorkoutList from './workoutList'
@@ -18,6 +19,7 @@ class MainPage extends Component {
       loggedIn: false,
       activeTab: 'learn'
     }
+
     this.logout = this.logout.bind(this)
     this.setActiveTab = this.setActiveTab.bind(this)
   }
@@ -56,6 +58,10 @@ class MainPage extends Component {
     }
   }
 
+  toggleCreateOpen() {
+    this.setState({ createIsOpen: !this.state.createIsOpen })
+  }
+
   render() {
     const { loggedIn, activeTab } = this.state
     const { currentUser } = this.props
@@ -68,7 +74,13 @@ class MainPage extends Component {
         <Menu activeTab={activeTab}
           setActiveTab={this.setActiveTab} />
 
-        {this.renderActiveComponent()}
+        <div>
+          <div className="create-item-cont">
+            <CreateItemForm />
+          </div>
+
+          {this.renderActiveComponent()}
+        </div>
 
       </div>
     );

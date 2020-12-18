@@ -13,3 +13,17 @@
 .active {
   background-color: green
 }
+
+.create-item-form {
+  max-width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.create-item-form button {
+  width: 23px;
+  border-radius: 10px;
+  text-align: center;
+}
