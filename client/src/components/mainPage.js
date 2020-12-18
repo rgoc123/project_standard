@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { getReviewItems } from '../actions/reviewItemActions'
-
 import ReviewList from './reviewList'
 
 class MainPage extends Component {
@@ -14,10 +12,6 @@ class MainPage extends Component {
     this.logout = this.logout.bind(this);
   }
 
-  componentDidMount() {
-    this.props.getReviewItems()
-  }
-
   logout() {
     localStorage.removeItem('user')
     localStorage.removeItem('authToken')
@@ -25,8 +19,6 @@ class MainPage extends Component {
   }
 
   render() {
-    console.log('Redux state')
-    console.log(this.props)
     return (
       <div>
         <h2>Welcome to the main page!</h2>
@@ -44,10 +36,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = id => dispatch => {
-  return {
-    getReviewItems: () => dispatch(getReviewItems())
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
+export default connect(mapStateToProps)(MainPage);
