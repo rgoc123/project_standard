@@ -35,16 +35,13 @@ class Header extends Component {
     this.setState({ modalIsOpen: true, form })
   }
 
-  afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    // subtitle.style.color = '#f00';
-  }
-
   closeModal(){
     this.setState({ modalIsOpen: false })
   }
 
   renderButtons(currentUser) {
+    const { form, modalIsOpen } = this.state
+
     if (currentUser) {
       return (
         <div className="header-buttons-cont">
@@ -60,8 +57,7 @@ class Header extends Component {
           </div>
 
           <Modal
-            isOpen={this.state.modalIsOpen}
-            onAfterOpen={this.afterOpenModal}
+            isOpen={modalIsOpen}
             onRequestClose={this.closeModal}
             contentLabel="Example Modal"
             style={customStyles}
@@ -69,10 +65,10 @@ class Header extends Component {
 
             <button onClick={this.closeModal}>Close</button>
 
-            <h5>{this.state.form === 'login' ? 'Log In' : 'Sign Up'}</h5>
+            <h5>{form === 'login' ? 'Log In' : 'Sign Up'}</h5>
 
             {
-              this.state.form === 'login'
+              form === 'login'
               ?
               <LoginForm />
               :
@@ -81,7 +77,7 @@ class Header extends Component {
 
           </Modal>
         </>
-    )
+      )
     }
   }
 
