@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 
+import { createReviewItem } from '../util/reviewItemAPIUtil'
+
 export default function CreateItemForm() {
   const [item, updateItem] = useState('')
   const [createIsOpen, toggleCreateOpen] = useState(false)
@@ -7,12 +9,17 @@ export default function CreateItemForm() {
   return (
     <div className="create-item-form">
       <h4>Create Item</h4>
-      
+
       <button onClick={() => toggleCreateOpen(!createIsOpen)}>
         {createIsOpen ? '-' : '+'}
       </button>
 
-      <input style={{ display: createIsOpen ? 'block' : 'none' }} placeholder="Item" />
+      <form onSubmit={() => createReviewItem(item)}>
+        <input className={createIsOpen ? 'open' : 'closed' }
+          onChange={(e) => updateItem(e.currentTarget.value)}
+          placeholder="Item" />
+      </form>
+
     </div>
   )
 }

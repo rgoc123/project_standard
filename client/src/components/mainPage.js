@@ -76,7 +76,7 @@ class MainPage extends Component {
 
         <div>
           <div className="create-item-cont">
-            <CreateItemForm />
+            <CreateItemForm activeTab={activeTab} />
           </div>
 
           {this.renderActiveComponent()}

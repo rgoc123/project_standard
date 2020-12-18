@@ -27,3 +27,11 @@
   border-radius: 10px;
   text-align: center;
 }
+
+.open {
+  display: block;
+}
+
+.closed {
+  display: none;
+}
