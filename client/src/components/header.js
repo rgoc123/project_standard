@@ -78,7 +78,11 @@ class Header extends Component {
   }
 
   renderLogout() {
-    return <button>Log Out</button>
+    return (
+      <div className="header-buttons-cont">
+        <button>Log Out</button>
+      </div>
+    )
   }
 
   render() {
