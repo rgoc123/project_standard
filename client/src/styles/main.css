@@ -14,7 +14,7 @@
   background-color: green
 }
 
-.create-item-form {
+.create-item-form-cont {
   max-width: 200px;
   display: flex;
   flex-direction: column;
@@ -22,7 +22,7 @@
   margin: 0 auto;
 }
 
-.create-item-form button {
+.open-close {
   width: 23px;
   border-radius: 10px;
   text-align: center;

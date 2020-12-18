@@ -67,6 +67,7 @@ app.post('/v1/login', userController.login);
 
 // Review Items
 app.get('/v1/reviewItems', reviewItemController.getReviewItems)
+app.post('/v1/reviewItems', reviewItemController.createReviewItem)
 
 
 const port = process.env.PORT || 7001;

@@ -7,10 +7,7 @@ const User = require('../models/User.js');
 
 exports.register = async (req, res, next) => {
   try {
-    console.log(req.body);
     const newUser = await User.create({ email: req.body.email, password: req.body.password });
-
-    console.log(newUser)
 
     const tokenContents = {};
     tokenContents.uuid = newUser.uuid;
@@ -20,7 +17,7 @@ exports.register = async (req, res, next) => {
     // const token = authController.signToken('id', tokenContents);
     // TODO: change to above when I get a jwt config
     const token = '12345asdf'
-    //
+    
     res.setHeader('authorization', 'Bearer ' + token);
 
     return res.status(200).json({ status: 200, data: newUser, token: token, message: "User created!" });

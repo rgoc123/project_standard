@@ -7,7 +7,7 @@ export const getReviewItems = async () => {
 export const createReviewItem = async (item, list) => {
   const res = await fetch('http://localhost:7001/v1/reviewItems', {
     method: 'POST',
-    body: JSON.stringify(item),
+    body: JSON.stringify({ title: item }),
     headers: {
       'Content-Type': 'application/json'
     }

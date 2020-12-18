@@ -6,7 +6,9 @@ export default function Menu({ activeTab, setActiveTab }) {
   return (
     <div>
       {['learn', 'cook', 'workout', 'watch'].map(tab => (
-        <button className={getStyle(tab)} onClick={() => setActiveTab(tab)}>
+        <button className={getStyle(tab)}
+          onClick={() => setActiveTab(tab)}
+          key={tab} >
           {tab[0].toUpperCase() + tab.slice(1)}
         </button>
       ))}

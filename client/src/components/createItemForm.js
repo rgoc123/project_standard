@@ -7,17 +7,20 @@ export default function CreateItemForm() {
   const [createIsOpen, toggleCreateOpen] = useState(false)
 
   return (
-    <div className="create-item-form">
+    <div className="create-item-form-cont">
       <h4>Create Item</h4>
 
-      <button onClick={() => toggleCreateOpen(!createIsOpen)}>
+      <button className="open-close"
+        onClick={() => toggleCreateOpen(!createIsOpen)}>
         {createIsOpen ? '-' : '+'}
       </button>
 
-      <form onSubmit={() => createReviewItem(item)}>
-        <input className={createIsOpen ? 'open' : 'closed' }
+      <form className={createIsOpen ? 'open' : 'closed' }
+        onSubmit={() => createReviewItem(item)}>
+        <input
           onChange={(e) => updateItem(e.currentTarget.value)}
           placeholder="Item" />
+        <button>Add</button>
       </form>
 
     </div>
