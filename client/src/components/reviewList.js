@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import { getReviewItems } from '../util/reviewItemAPIUtil'
 
-export default function ReviewList() {
+export default function ReviewList({ activeTab }) {
   const [reviewItems, setReviewItems] = useState([])
 
   useEffect(() => {

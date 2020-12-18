@@ -5,6 +5,9 @@ import { persistUser } from '../actions/sessionActions'
 
 import Menu from './menu'
 import ReviewList from './reviewList'
+import CookList from './cookList'
+import WorkoutList from './workoutList'
+import WatchList from './watchList'
 
 class MainPage extends Component {
   constructor() {
@@ -35,6 +38,22 @@ class MainPage extends Component {
     this.setState({ activeTab: tab })
   }
 
+  renderActiveComponent() {
+    const { activeTab } = this.state
+    switch (activeTab) {
+      case 'learn':
+        return <ReviewList />
+      case 'cook':
+        return <CookList />
+      case 'workout':
+        return <WorkoutList />
+      case 'watch':
+        return <WatchList />
+      default:
+        return <ReviewList />
+    }
+  }
+
   render() {
     const { loggedIn, activeTab } = this.state
     const { currentUser } = this.props
@@ -46,7 +65,9 @@ class MainPage extends Component {
 
         <Menu activeTab={activeTab}
           setActiveTab={this.setActiveTab} />
-        <ReviewList />
+
+        {this.renderActiveComponent()}
+
       </div>
     );
   }

@@ -36,7 +36,6 @@ function App() {
       <HashRouter>
         <div className="App">
           <Header />
-          <div>Hi</div>
           <Route path="/" component={MainPage} />
           <Route path="/login" component={LoginForm} />
           <Route path="/register" component={RegisterForm} />

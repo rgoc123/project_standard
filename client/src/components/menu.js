@@ -6,7 +6,7 @@ export default function Menu({ activeTab, setActiveTab }) {
       <button onClick={() => setActiveTab('learn')}>Learn</button>
       <button onClick={() => setActiveTab('cook')}>Cook</button>
       <button onClick={() => setActiveTab('workout')}>Workout</button>
-      <button onClick={() => setActiveTab('watchLearn')}>Watch/List</button>
+      <button onClick={() => setActiveTab('watch')}>Watch/List</button>
     </div>
   )
 }
