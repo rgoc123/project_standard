@@ -1,12 +1,15 @@
 import React from 'react'
 
 export default function Menu({ activeTab, setActiveTab }) {
+  const getStyle = (tab) => activeTab === tab ? 'active' : 'inactive'
+
   return (
     <div>
-      <button onClick={() => setActiveTab('learn')}>Learn</button>
-      <button onClick={() => setActiveTab('cook')}>Cook</button>
-      <button onClick={() => setActiveTab('workout')}>Workout</button>
-      <button onClick={() => setActiveTab('watch')}>Watch/List</button>
+      {['learn', 'cook', 'workout', 'watch'].map(tab => (
+        <button className={getStyle(tab)} onClick={() => setActiveTab(tab)}>
+          {tab[0].toUpperCase() + tab.slice(1)}
+        </button>
+      ))}
     </div>
   )
 }

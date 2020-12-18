@@ -5,7 +5,7 @@ export default function WacthList({ activeTab }) {
 
   return (
     <div className="watch-list">
-      <h4>Wacth/Listen List</h4>
+      <h4>Wacth List</h4>
     </div>
   )
 }

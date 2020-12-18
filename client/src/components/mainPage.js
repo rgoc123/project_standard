@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 
 import { persistUser } from '../actions/sessionActions'
 
+import '../styles/main.css'
+
 import Menu from './menu'
 import ReviewList from './reviewList'
 import CookList from './cookList'
