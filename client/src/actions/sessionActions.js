@@ -48,3 +48,7 @@ export const logout = () => dispatch => {
     dispatch(receiveCurrentUser(null))
   )));
 };
+
+export const persistUser = user => dispatch => {
+  return dispatch(receiveCurrentUser(user))
+}

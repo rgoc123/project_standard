@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react'
 
-function ReviewList() {
+import { getReviewItems } from '../util/reviewItemAPIUtil'
+
+export default function ReviewList() {
   const [reviewItems, setReviewItems] = useState([])
 
   useEffect(() => {
     async function getData() {
-      const res = await fetch('http://localhost:7001/v1/reviewItems');
-      const resJSON = await res.json();
-
-      console.log(resJSON)
+      const resJSON = await getReviewItems()
       setReviewItems(resJSON.data)
     }
 
@@ -29,5 +28,3 @@ function ReviewList() {
     </div>
   )
 }
-
-export default ReviewList

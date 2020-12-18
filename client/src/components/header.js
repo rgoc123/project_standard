@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import Modal from 'react-modal';
 
 import LoginForm from './loginForm.js'
@@ -43,14 +44,11 @@ class Header extends Component {
     this.setState({ modalIsOpen: false })
   }
 
-  render() {
+  renderButtons() {
     return (
-      <div className="header-container">
-
-        <h1>Standard Project!</h1>
-
+      <>
         <div className="header-buttons-cont">
-          <button onClick={() => this.openModal('login')}>Login</button>
+          <button onClick={() => this.openModal('login')}>Log In</button>
           <button onClick={() => this.openModal('signup')}>Sign Up</button>
         </div>
 
@@ -75,10 +73,37 @@ class Header extends Component {
           }
 
         </Modal>
+      </>
+    )
+  }
+
+  renderLogout() {
+    return <button>Log Out</button>
+  }
+
+  render() {
+    return (
+      <div className="header-container">
+
+        <h1>Standard Project!</h1>
+
+        {
+          this.props.currentUser
+          ?
+          this.renderLogout()
+          :
+          this.renderButtons()
+        }
 
       </div>
     )
   }
 }
 
-export default Header
+const mapStateToProps = (state) => {
+  return {
+    currentUser: state.session.currentUser
+  };
+};
+
+export default connect(mapStateToProps)(Header)

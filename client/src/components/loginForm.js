@@ -12,8 +12,15 @@ class LoginForm extends Component {
       password: '',
       loggedIn: false
     }
-    this.handleSubmit = this.handleSubmit.bind(this);
+
     this.handleInputChange = this.handleInputChange.bind(this);
+  }
+
+  componentDidMount() {
+    const loggedInUser = localStorage.getItem('user')
+    if (loggedInUser) {
+      this.setState({ loggedIn: true })
+    }
   }
 
   handleInputChange(e) {
@@ -23,32 +30,6 @@ class LoginForm extends Component {
       this.setState({ 'email': e.target.value });
     } else {
       this.setState({ 'password': e.target.value });
-    }
-  }
-
-  async handleSubmit(e) {
-    try {
-      e.preventDefault();
-      const loginInfo = this.state;
-
-      const preJSONifiedRes = await fetch('http://localhost:7001/v1/login', {
-        method: 'POST',
-        body: JSON.stringify(loginInfo),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-      const res = await preJSONifiedRes.json();
-
-      if (res.status === 200) {
-        localStorage.setItem('authToken', JSON.stringify(res.data.token));
-        localStorage.setItem('user', JSON.stringify(res.data.user));
-        this.setState({ loggedIn: true });
-      } else {
-        throw new Error(JSON.stringify(res.message));
-      }
-    } catch (err) {
-      console.log(err);
     }
   }
 
@@ -90,7 +71,7 @@ class LoginForm extends Component {
             placeholder="Password"
             onChange={this.handleInputChange}
           /><br></br>
-        <button onClick={() => this.props.login({ email: 'money', password: 'bro' })}>Login</button>
+        <button onClick={() => this.props.login({ email, password })}>Login</button>
         </form>
         <button onClick={() => this.processForgotPassword()}>Forgot Password</button>
       </div>
