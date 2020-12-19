@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 
-import { getReviewItems } from '../util/reviewItemAPIUtil'
+import { getReviewItems } from '../actions/reviewItemActions'
 
-export default function ReviewList({ activeTab }) {
-  const [reviewItems, setReviewItems] = useState([])
+export default function ReviewList(props) {
+  const reviewItems = useSelector(state => state.reviewItems)
+  const dispatch = useDispatch()
 
-  useEffect(() => {
-    async function getData() {
-      const resJSON = await getReviewItems()
-      setReviewItems(resJSON.data)
-    }
-
-    getData()
-  }, [])
+  useEffect(() => { dispatch(getReviewItems()) }, [])
 
   return (
     <div className="review-list">
