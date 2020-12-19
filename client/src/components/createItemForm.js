@@ -21,9 +21,11 @@ export default function CreateItemForm() {
         onSubmit={(e) => {
           e.preventDefault()
           dispatch(createReviewItem(item))
+          updateItem('')
         }}>
         <input
           onChange={(e) => updateItem(e.currentTarget.value)}
+          value={item}
           placeholder="Item" />
         <button>Add</button>
       </form>
