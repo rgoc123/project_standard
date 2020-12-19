@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 
-import { createReviewItem } from '../util/reviewItemAPIUtil'
+import { createReviewItem } from '../actions/reviewItemActions'
 
 export default function CreateItemForm() {
   const [item, updateItem] = useState('')
   const [createIsOpen, toggleCreateOpen] = useState(false)
+  const dispatch = useDispatch()
 
   return (
     <div className="create-item-form-cont">
@@ -16,7 +18,10 @@ export default function CreateItemForm() {
       </button>
 
       <form className={createIsOpen ? 'open' : 'closed' }
-        onSubmit={() => createReviewItem(item)}>
+        onSubmit={(e) => {
+          e.preventDefault()
+          dispatch(createReviewItem(item))
+        }}>
         <input
           onChange={(e) => updateItem(e.currentTarget.value)}
           placeholder="Item" />
