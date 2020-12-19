@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { getReviewItems } from '../actions/reviewItemActions'
@@ -7,7 +7,7 @@ export default function ReviewList(props) {
   const reviewItems = useSelector(state => state.reviewItems)
   const dispatch = useDispatch()
 
-  useEffect(() => { dispatch(getReviewItems()) }, [])
+  useEffect(() => { dispatch(getReviewItems()) })
 
   return (
     <div className="review-list">

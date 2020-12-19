@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
+// import React, { useState } from 'react'
 
 export default function WorkoutList({ activeTab }) {
-  const [workoutItems, setWorkoutItems] = useState([])
+  // const [workoutItems, setWorkoutItems] = useState([])
 
   return (
     <div className="workout-list">

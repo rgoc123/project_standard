@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
+// import React, { useState } from 'react'
 
 export default function WacthList({ activeTab }) {
-  const [watchItems, setWacthItems] = useState([])
+  // const [watchItems, setWacthItems] = useState([])
 
   return (
     <div className="watch-list">

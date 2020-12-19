@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
+// import React, { useState } from 'react'
 
 export default function CookList({ activeTab }) {
-  const [cookItems, setCookItems] = useState([])
+  // const [cookItems, setCookItems] = useState([])
 
   return (
     <div className="cook-list">
