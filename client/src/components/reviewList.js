@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { getReviewItems } from '../actions/reviewItemActions'
 
-export default function ReviewList(props) {
+export default function ReviewList() {
   const reviewItems = useSelector(state => state.reviewItems)
   const dispatch = useDispatch()
 
