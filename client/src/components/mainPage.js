@@ -74,12 +74,18 @@ class MainPage extends Component {
         <Menu activeTab={activeTab}
           setActiveTab={this.setActiveTab} />
 
-        <div>
-          <div className="create-item-cont">
-            <CreateItemForm activeTab={activeTab} />
+        <div className="list-and-main">
+          <div className="list-cont">
+            <div className="create-item-cont">
+              <CreateItemForm activeTab={activeTab} />
+            </div>
+
+            {this.renderActiveComponent()}
           </div>
 
-          {this.renderActiveComponent()}
+          <div className="main-cont">
+
+          </div>
         </div>
 
       </div>
