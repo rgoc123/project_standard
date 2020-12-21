@@ -7,7 +7,7 @@ export default function ReviewList() {
   const reviewItems = useSelector(state => state.reviewItems)
   const dispatch = useDispatch()
 
-  useEffect(() => { dispatch(getReviewItems()) })
+  useEffect(() => { dispatch(getReviewItems()) }, [dispatch])
 
   return (
     <div className="review-list">

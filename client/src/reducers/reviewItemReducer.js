@@ -6,7 +6,6 @@ const reviewItemReducer = (state = [], action) => {
       const reviewItems = action.reviewItems
       return [ ...reviewItems ]
     case CREATE_REVIEW_ITEM:
-      debugger
       const newReviewItem = action.reviewItem
       return [ ...state, newReviewItem ]
     default:
