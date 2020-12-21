@@ -10,8 +10,28 @@
   top: 10px;
 }
 
+.menu-button {
+  width: 100px;
+  padding: 15px;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.menu-button:first-of-type {
+  border-radius: 10px 0 0 10px;
+}
+
+.menu-button:last-of-type {
+  border-radius: 0 10px 10px 0;
+}
+
+.menu-button:focus {
+  outline: none;
+}
+
 .active {
-  background-color: green
+  background-color: #AEDBAB !important;
 }
 
 .create-item-form-cont {
