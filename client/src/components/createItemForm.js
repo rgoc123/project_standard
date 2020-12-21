@@ -10,8 +10,6 @@ export default function CreateItemForm() {
 
   return (
     <div className="create-item-form-cont">
-      <h4>Create Item</h4>
-
       <button className="open-close"
         onClick={() => toggleCreateOpen(!createIsOpen)}>
         {createIsOpen ? '-' : '+'}

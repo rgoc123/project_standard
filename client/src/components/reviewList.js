@@ -11,8 +11,6 @@ export default function ReviewList() {
 
   return (
     <div className="review-list">
-      <h4>Review List</h4>
-
       {reviewItems.map(item => {
         return (
           <div className="review-item" key={item.uuid}>

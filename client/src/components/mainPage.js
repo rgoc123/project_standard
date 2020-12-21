@@ -77,6 +77,7 @@ class MainPage extends Component {
         <div className="list-and-main">
           <div className="list-cont">
             <div className="create-item-cont">
+              <h4>{activeTab[0].toUpperCase() + activeTab.slice(1)} List</h4>
               <CreateItemForm activeTab={activeTab} />
             </div>
 

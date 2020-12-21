@@ -1,3 +1,7 @@
+h4 {
+  margin: 0;
+}
+
 .header-container {
   display: flex;
   position: relative;
@@ -38,7 +42,13 @@
   display: flex;
 }
 
+.create-item-cont {
+  display: flex;
+  align-items: center;
+}
+
 .list-cont {
+  width: 200px;
   padding: 0 20px;
 }
 
@@ -62,4 +72,8 @@
 
 .closed {
   display: none;
+}
+
+.review-item p {
+  text-align: left;
 }
